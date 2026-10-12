@@ -1,0 +1,46 @@
+# --- Godot 4 ---
+.godot/
+.nono
+*.translation
+export_presets.cfg      # remove this line if you want to share export settings
+export_credentials.cfg
+.mono/
+data_*/
+mono_crash.*.json
+
+# --- Godot 3 (only if needed) ---
+.import/
+.mono/
+
+# --- SCons / godot-cpp build output ---
+.sconsign.dblite
+.sconsign*.dblite
+.scons_cache/
+.scons*
+config.log
+*.os
+*.obj
+*.o
+*.a
+*.lib
+*.pdb
+*.ilk
+*.exp
+*.d
+*.gen.*
+
+# --- Compiled extension binaries ---
+bin/
+*.so
+*.dll
+*.dylib
+*.framework/
+*.wasm
+
+# --- CMake (if you use it instead of SCons) ---
+build/
+cmake-build-*/
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cma
+.idea

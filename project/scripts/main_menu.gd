@@ -1,0 +1,12 @@
+extends Control
+
+@onready var start_button: Button = $CenterContainer/VBoxContainer/StartButton
+
+
+func _ready() -> void:
+	start_button.pressed.connect(_on_start_pressed)
+
+	start_button.grab_focus()  # enables keyboard/gamepad navigation
+
+func _on_start_pressed() -> void:
+	get_tree().change_scene_to_file("res://scene/game.tscn")
