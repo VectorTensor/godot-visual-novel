@@ -76,3 +76,6 @@ visible = false
 position = Vector2(757.00006, -189)
 scale = Vector2(0.33435538, 0.32925415)
 texture = SubResource("CompressedTexture2D_n4st5")
+
+[node name="dialogueText" type="dialogueText" parent="." unique_id=526732672 node_paths=PackedStringArray("dialogue_box")]
+dialogue_box = NodePath("../TextUI/Label")
