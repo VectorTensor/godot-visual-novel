@@ -1,3 +1,78 @@
 [gd_scene format=3 uid="uid://br2oc7abadl3c"]
 
+[ext_resource type="Texture2D" uid="uid://y7xv4f6fdx8o" path="res://assets/VisualNovelDialogueGUI_PNG/dialoguebox_light_orange.png" id="1_5kiuu"]
+[ext_resource type="Texture2D" uid="uid://dln6a2jooauhp" path="res://assets/UI/text_frame_1920x1080_transparent.png" id="2_dbls1"]
+[ext_resource type="FontFile" uid="uid://cr3jlc8n8t0tb" path="res://assets/fonts/MonofurNerdFontMono-Bold.ttf" id="3_33cqm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n4st5"]
+load_path = "res://.godot/imported/male.png-3bc45f2a264a998b268c0984a1f4e637.ctex"
+
 [node name="Game" type="Node2D" unique_id=1243868956]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=175434750]
+
+[node name="Backgound" type="ColorRect" parent="." unique_id=1255428139]
+custom_minimum_size = Vector2(0.16, 0.625)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -965.0
+offset_top = -538.0
+offset_right = 955.0
+offset_bottom = 542.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16933057, 0.19569686, 0.23774233, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Dialgoue box" type="TextureRect" parent="." unique_id=630758401]
+visible = false
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -909.0
+offset_top = 102.0
+offset_right = 891.0
+offset_bottom = 531.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_5kiuu")
+
+[node name="TextUI" type="TextureRect" parent="." unique_id=1476039062]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -963.0
+offset_top = -553.0
+offset_right = 957.0
+offset_bottom = 527.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dbls1")
+
+[node name="Label" type="Label" parent="TextUI" unique_id=1392184270]
+custom_maximum_size = Vector2(1800, 1000)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 81.0
+offset_top = 109.0
+offset_right = -39.0
+offset_bottom = -138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("3_33cqm")
+theme_override_font_sizes/font_size = 40
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus purus nec nibh hendrerit mollis eu vel orci. Duis in facilisis ante. In gravida maximus venenatis. Suspendisse mollis nunc nec eleifend eleifend. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur euismod nulla ut dignissim porta. Fusce turpis dui, viverra et nisl ut, lobortis euismod libero. Aliquam tempus libero eu faucibus iaculis. Cras et augue non tortor cursus imperdiet id sit amet risus. Vivamus id viverra neque.
+
+In pharetra sollicitudin magna, a ultrices lacus gravida id. Integer pharetra nulla est, sed mattis sapien dictum porttitor. Etiam dictum diam eu quam lobortis, ac placerat lectus sagittis. Vestibulum vitae posuere est, sed ultricies tortor. Sed nec sem sollicitudin, scelerisque justo et, condimentum purus. Etiam condimentum mattis volutpat. Mauris sit amet urna massa. Aliquam ligula sem, luctus sit amet arcu nec, bibendum porttitor dolor. Proin a elementum lectus, eu euismod dolor. Sed id dictum nunc. Mauris pharetra erat nec sodales mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus felis odio, imperdiet eu urna blandit, pellentesque lacinia nulla. Quisque risus libero, tincidunt sed commodo a, sodales in ipsum. Fusce consequat, est ornare molestie tempor, est elit ornare tortor, condimentum commodo lorem dolor non augue. Phasellus ultricies efficitur eros, at pellentesque lorem vestibulum at."
+autowrap_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1209832228]
+visible = false
+position = Vector2(757.00006, -189)
+scale = Vector2(0.33435538, 0.32925415)
+texture = SubResource("CompressedTexture2D_n4st5")

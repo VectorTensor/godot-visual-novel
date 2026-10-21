@@ -1,14 +1,16 @@
 #pragma once
 
 #include <godot_cpp/classes/node2d.hpp>
+
+#include "godot_cpp/classes/label.hpp"
+
 namespace godot {
 
     class dialogueText: public Node2D{
         GDCLASS(dialogueText, Node2D)
 
     private:
-        double time_passed;
-        double amplitude;
+        godot::Label* label;
 
     protected:
         static void _bind_methods();
