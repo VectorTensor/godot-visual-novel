@@ -22,6 +22,10 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="/Users/progressive/learn/godot-visual-novel/project/mov/"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"

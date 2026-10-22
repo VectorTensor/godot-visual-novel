@@ -1,0 +1,69 @@
+#include "dialogueText.h"
+
+
+void godot::dialogueText::_bind_methods() {
+    ClassDB::bind_method(
+                D_METHOD("set_dialogue_box", "label"),
+                &dialogueText::set_dialogue_box
+            );
+
+    ClassDB::bind_method(
+        D_METHOD("get_dialogue_box"),
+        &dialogueText::get_dialogue_box
+    );
+
+    ClassDB::bind_method(
+        D_METHOD("set_yaml_path", "path")
+        );
+
+    ADD_PROPERTY(
+        PropertyInfo(Variant::OBJECT, "dialogue_box",
+            PROPERTY_HINT_NODE_TYPE, "Label"),
+        "set_dialogue_box",
+        "get_dialogue_box"
+    );}
+
+void godot::dialogueText::_process(double delta) {
+
+    current_delta += delta;
+    if (current_delta >= speed && current_length <= max_length) {
+
+        current_delta = 0;
+        String subStr = sampleText.substr(0, current_length);
+        current_length += 1;
+        label->set_text(subStr);
+
+    }
+
+
+}
+
+godot::dialogueText::dialogueText() {
+    sampleText = R"(
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque dapibus purus nec nibh hendrerit mollis eu vel orci. Duis in facilisis ante. In gravida maximus venenatis. Suspendisse mollis nunc nec eleifend eleifend. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Curabitur euismod nulla ut dignissim porta.
+ Fusce turpis dui, viverra et nisl ut, lobortis euismod libero. Aliquam tempus libero eu faucibus iaculis. Cras et augue non tortor cursus imperdiet id sit amet risus. Vivamus id viverra neque.
+In pharetra sollicitudin magna, a ultrices lacus gravida id. Integer pharetra nulla est, sed mattis sapien dictum porttitor. Etiam dictum diam eu quam lobortis, ac placerat lectus sagittis. Vestibulum vitae posuere est, sed ultricies tortor. Sed nec sem sollicitudin, scelerisque justo et, condimentum purus. Etiam condimentum mattis volutpat. Mauris sit amet urna massa. Aliquam ligula sem, luctus sit amet arcu nec, bibendum porttitor dolor. Proin a elementum lectus, eu euismod dolor. Sed id dictum nunc. Mauris pharetra erat nec sodales mattis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Phasellus felis odio, imperdiet eu urna blandit, pellentesque lacinia nulla. Quisque risus libero, tincidunt sed commodo a, sodales in ipsum. Fusce consequat, est ornare molestie tempor, est elit ornare tortor, condimentum commodo lorem dolor non augue.
+Phasellus ultricies efficitur eros, at pellentesque lorem vestibulum at.
+
+    )";
+
+    max_length = sampleText.length();
+
+}
+godot::dialogueText::~dialogueText() {
+
+}
+void godot::dialogueText::set_dialogue_box(Label *node) {
+    label= node;
+}
+
+godot::Label *godot::dialogueText::get_dialogue_box() const {
+    return label;
+}
+
+void godot::dialogueText::_ready() {
+    label->set_text(String(""));
+
+}
+
+

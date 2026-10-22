@@ -1,5 +1,11 @@
 #include "dialogueText.h"
 
+#include "godot_cpp/classes/file_access.hpp"
+
+
+namespace godot {
+    class FileAccess;
+}
 
 void godot::dialogueText::_bind_methods() {
     ClassDB::bind_method(
@@ -12,12 +18,32 @@ void godot::dialogueText::_bind_methods() {
         &dialogueText::get_dialogue_box
     );
 
+    ClassDB::bind_method(
+        D_METHOD("set_yaml_path", "path"),
+        &dialogueText::set_yaml_path
+        );
+    ClassDB::bind_method(
+        D_METHOD("get_yaml_path"), &dialogueText::get_yaml_path);
+    ClassDB::bind_method(
+        D_METHOD("load_dialogue" ),
+        &dialogueText::load_dialogue
+        );
+
     ADD_PROPERTY(
         PropertyInfo(Variant::OBJECT, "dialogue_box",
             PROPERTY_HINT_NODE_TYPE, "Label"),
         "set_dialogue_box",
         "get_dialogue_box"
-    );}
+    );
+    ADD_PROPERTY(
+        PropertyInfo(Variant::STRING, "yaml_path",
+            PROPERTY_HINT_FILE, "*.yaml,*.yml"),
+            "set_yaml_path",
+            "get_yaml_path"
+        );
+
+
+}
 
 void godot::dialogueText::_process(double delta) {
 
@@ -60,6 +86,31 @@ godot::Label *godot::dialogueText::get_dialogue_box() const {
 void godot::dialogueText::_ready() {
     label->set_text(String(""));
 
+}
+
+void godot::dialogueText::set_yaml_path(const String &path) {
+    yaml_path = path;
+}
+
+godot::String godot::dialogueText::get_yaml_path() const {
+    return yaml_path;
+}
+
+void godot::dialogueText::load_dialogue() {
+    Ref<FileAccess> file =
+        FileAccess::open(yaml_path, FileAccess::READ);
+
+    if (file.is_null()) {
+        UtilityFunctions::printerr(
+            "Failed to open YAML: ", yaml_path
+        );
+        return;
+    }
+
+    String content = file->get_as_text();
+
+    // Pass content to your YAML parser.
+    UtilityFunctions::print(content);
 }
 
 
